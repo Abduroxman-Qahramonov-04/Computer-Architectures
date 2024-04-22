@@ -1,0 +1,18 @@
+# Open the terminal window and type following command, instead of username put your username
+
+ssh -p 13245 username@iotserver.uz
+
+# Copy hello.s file from home directory
+cp /home/hello.s hello.s
+
+# steps of compilation in assembly
+# step-1: compile
+as -o filename.o filename.s
+
+# step-2: Link
+ld -o programname filename.o
+
+# step-3: run the compiled program
+./programname
+
+

@@ -1,0 +1,36 @@
+.section .text
+.global _start
+
+_start:
+    MOV   X0, #3
+    CMP   X0, #0        // Compare n with 0
+    BEQ   handle_zero   // If n is 0, handle the zero case
+    CMP   X0, #1        // Compare n with 1
+    BEQ   handle_one    // If n is 1, handle the one case
+
+    MOV   X1, #0        // Initialize fib0 to 0
+    MOV   X2, #1        // Initialize fib1 to 1
+    MOV   X3, #2        // Initialize counter to 2
+
+fibonacci_loop:
+    CMP   X3, X0        // Compare counter with n
+    BGT   end_fibonacci // If counter > n, end loop
+    ADD   X4, X1, X2    // fibN = fib0 + fib1
+    MOV   X1, X2        // fib0 = fib1
+    MOV   X2, X4        // fib1 = fibN
+    ADD   X3, X3, #1    // Increment counter
+    B     fibonacci_loop// Repeat loop
+
+end_fibonacci:
+    MOV   X0, X2        // Move the result into X0
+    B     exit          // Exit the loop
+
+handle_zero:
+    MOV   X0, #0        // If n is 0, the result is 0
+    B     exit
+
+handle_one:
+    MOV   X0, #1        // If n is 1, the result is 1
+
+exit:
+    

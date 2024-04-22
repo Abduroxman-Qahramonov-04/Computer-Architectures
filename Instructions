@@ -1,0 +1,32 @@
+ssh -p 13245 <student_id>@iotserver.uz
+as -o file.o file.s
+ld -o file file.o
+./file
+gdb ./file
+run ./file
+(break _start)
+info registers
+p $x0
+
+
+stp x0, x1, [sp, #-16]!   // Store x0 and x1 onto the stack, decrementing SP by 16 bytes
+ldp x0, x1, [sp], #16   // Load x0 and x1 from the stack, incrementing SP by 16 bytes
+
+
+
+
+Data directives in ARM64
+
+They're used to allocate memory space for variables and specify their data type now I'm out to show some of them FYI:
+
+.dword (Double Word) -  represents a 32-bit integer or a 4-byte value.
+.word (Word) - usually represents a 16-bit integer or a 2-byte value.
+.quad (Quad Word) - represents a 64-bit integer or an 8-byte value
+.byte (Byte) - you know
+.ascii/.asciz (ASCII String) :
+
+.ascii is used to declare a sequence of ASCII characters without a null terminator.
+.asciz is used to declare a sequence of ASCII characters with a null terminator at the end.
+.space (Space) - directive reserves a specific amount of space in memory without initializing it with any specific value. You specify the number of bytes you want to allocate
+
+.align (Alignment)- .align directive aligns the next data item on a specified byte boundary. For example, .align 4 aligns the next data item on a 4-byte boundary.
